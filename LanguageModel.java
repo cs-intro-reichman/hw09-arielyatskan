@@ -96,7 +96,7 @@ public class LanguageModel {
         if (initialText.length() < windowLength)  return initialText;
         String window = "" + initialText.substring(initialText.length() - windowLength);
         String result = initialText;
-        while (result.length() < textLength) {
+        while (result.length() < textLength + initialText.length()) {
             if (!CharDataMap.containsKey(window))  break;
             List ranList = CharDataMap.get(window);
             char c = getRandomChar(ranList);
