@@ -31,21 +31,23 @@ public class List {
     /** GIVE Adds a CharData object with the given character to the beginning of this list. */
     public void addFirst(char chr) {
         CharData cp = new CharData(chr);
-        Node newFirst = new Node(cp);
+        Node newFirst = new Node(cp, first);
         newFirst.next = this.first;
-        this.first = newFirst;
-        this.size++;
+        first = newFirst;
+        size++;
     }
     
     /** GIVE Textual representation of this list. */
     public String toString() {
-        if (this.size == 0)  return "";
+        if (this.size == 0) return "()";
         ListIterator current = new ListIterator(first);
-        StringBuilder sb = new StringBuilder();
+        String str = "("; 
         while (current.hasNext()) {
-            sb.append(current.next());
+            str += current.next();
+            if (current.hasNext())  str += " ";
         }
-        return sb.toString();
+        str += ")";
+        return str;
     }
 
     /** Returns the index of the first CharData object in this list
